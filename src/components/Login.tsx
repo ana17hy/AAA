@@ -165,18 +165,25 @@ function Login() {
               display: 'flex',
               alignItems: 'center',
               gap: 6,
-              marginTop: 3,
-              marginLeft: 24,
-              marginRight: 24,
+              marginTop: 8,
+              maxWidth: 420,
+              marginLeft: 'auto',
+              marginRight: 'auto',
               fontSize: 15,
               color: '#374151',
               fontWeight: 500,
             }}
           >
-            <span className="text-yellow-400 text-base">🐣</span>
+            <span style={{ fontSize: 20, marginRight: 4 }}>🐣</span>
             Prueba con la clave:
-            <span className="bg-gray-100 text-blue-700 font-mono px-1.5 py-0.5 rounded font-semibold ml-1">
-              {DEFAULT_API_KEY}
+            <span style={{
+              color: '#2563eb',
+              fontWeight: 700,
+              fontFamily: 'monospace',
+              marginLeft: 4,
+              fontSize: 15,
+            }}>
+              ed3ca6ac436a95811625b9a18f5b3265
             </span>
           </div>
         </div>
