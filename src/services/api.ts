@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { AxiosResponse } from "axios";
-import type { Student, Subject, Absence, AcademicRecord, DashboardStats, AbsenceSummary } from "../types/student";
+import type { Student, Subject, Absence, AcademicRecord, DashboardStats, Enrollment } from "../types/student";
 
 const BACKEND_URL = "http://pc2-matricula-alb-2123051620.us-east-1.elb.amazonaws.com/"; // ESTO SE CAMBIA CON EL ENDPOINT BASE
 
@@ -103,21 +103,58 @@ class ApiService {
 
   // trae la información de todos los estudiantes
   async getStudents(): Promise<AxiosResponse<Student[]>> {
-    return this.api.get("/students/");
+    const response = await this.api.get("/students/");
+    
+    // Mapear los datos del backend al formato que espera el frontend
+    const mappedStudents = response.data.map((student: any) => ({
+      id: student.id.toString(),
+      name: `${student.first_name} ${student.last_name}`,
+      email: student.email,
+      studentId: student.dni,
+      major: "Ingeniería de Sistemas", // Valor por defecto ya que el backend no lo tiene
+      semester: 1, // Valor por defecto
+      gpa: 3.5, // Valor por defecto
+      totalCredits: 0, // Valor por defecto
+      enrollmentDate: student.admission_date
+    }));
+    
+    return {
+      ...response,
+      data: mappedStudents
+    };
   }
 
   // trae la información del estudiante segun el id
   async getStudentProfileById(studentId: string): Promise<AxiosResponse<Student>> {
-    return this.api.get(`/students/${studentId}/`);
+    const response = await this.api.get(`/students/${studentId}/`);
+    
+    // Mapear los datos del backend al formato que espera el frontend
+    const student = response.data;
+    const mappedStudent = {
+      id: student.id.toString(),
+      name: `${student.first_name} ${student.last_name}`,
+      email: student.email,
+      studentId: student.dni,
+      major: "Ingeniería de Sistemas", // Valor por defecto ya que el backend no lo tiene
+      semester: 1, // Valor por defecto
+      gpa: 3.5, // Valor por defecto
+      totalCredits: 0, // Valor por defecto
+      enrollmentDate: student.admission_date
+    };
+    
+    return {
+      ...response,
+      data: mappedStudent
+    };
   }
 
   // trae la información de las inscripciones del estudiante segun el id
-  async getEnrollments(studentId: string) {
+  async getEnrollments(studentId: number): Promise<AxiosResponse<Enrollment[]>> {
     return this.api.get(`/enrollments/?student_id=${studentId}`);
   }
 
   // trae la información de las faltas del estudiante segun el id -> un resumen
-  async getAbsenceSummary(studentId: number): Promise<AxiosResponse<AbsenceSummary[]>> {
+  async getAbsenceSummary(studentId: string) {
     return this.api.get(`/students/${studentId}/absence_summary/`);
   }
 
