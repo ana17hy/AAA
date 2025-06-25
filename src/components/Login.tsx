@@ -89,12 +89,38 @@ function Login() {
                   aria-label={showKey ? "Ocultar clave" : "Mostrar clave"}
                 >
                   {showKey ? (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.657.336-3.236.938-4.675M15 12a3 3 0 11-6 0 3 3 0 016 0zm6.062-4.675A9.956 9.956 0 0122 9c0-5.523-4.477-10-10 10a9.956 9.956 0 01-4.675-.938" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 12C3.5 7.5 7.5 4.5 12 4.5s8.5 3 9.75 7.5c-1.25 4.5-5.25 7.5-9.75 7.5s-8.5-3-9.75-7.5z"
+                      />
+                      <circle cx="12" cy="12" r="3" />
                     </svg>
                   ) : (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm2.25 2.25l2.25 2.25m-2.25-2.25A9.956 9.956 0 0022 9c0-5.523-4.477-10-10-10a9.956 9.956 0 00-4.675.938" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.98 8.223A10.477 10.477 0 002.25 12c1.25 4.5 5.25 7.5 9.75 7.5 2.042 0 3.97-.492 5.617-1.357M6.53 6.53A9.956 9.956 0 0112 4.5c4.5 0 8.5 3 9.75 7.5a10.478 10.478 0 01-4.293 5.568M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 3l18 18"
+                      />
                     </svg>
                   )}
                 </button>
@@ -136,11 +162,12 @@ function Login() {
           </form>
 
           {/* Ayuda / ejemplo de clave */}
-          <div className="bg-gray-50 border-t px-6 py-4 text-sm text-gray-600 flex items-center gap-2">
-            <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
-            </svg>
-            Prueba con la clave: <span className="font-mono bg-gray-100 px-2 py-1 rounded text-blue-700">{DEFAULT_API_KEY}</span>
+          <div className="bg-blue-50 border border-blue-100 rounded px-2 py-1 text-[13px] text-gray-700 flex items-center gap-1 mt-2 font-medium">
+            <span className="text-yellow-400 text-base">🐣</span>
+            Prueba con la clave:
+            <span className="bg-gray-100 text-blue-700 font-mono px-1.5 py-0.5 rounded font-semibold ml-1">
+              {DEFAULT_API_KEY}
+            </span>
           </div>
         </div>
       </div>
