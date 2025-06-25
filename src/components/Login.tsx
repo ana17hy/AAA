@@ -28,21 +28,39 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dot-pattern bg-gray-50">
-      <div className="w-full max-w-md mx-auto animate-fade-in">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-300">
-          {/* Header con gradiente y birrete */}
-          <div className="bg-gradient-to-br from-blue-700 via-purple-600 to-fuchsia-500 p-8 text-center">
-            <div className="flex justify-center mb-3">
-              <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white bg-opacity-20 shadow-lg">
-                {/* Birrete SVG grande */}
-                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0 0c-4.418 0-8-1.79-8-4" />
-                </svg>
-              </span>
-            </div>
-            <h1 className="text-3xl font-extrabold text-white mb-1 drop-shadow">Bienvenido al Portal Académico</h1>
-            <p className="text-blue-100 text-base font-medium">Ingresa tu API Key para acceder</p>
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: '#ffffff',
+    }}>
+      <div style={{
+        width: 370,
+        background: '#fff',
+        borderRadius: 16,
+        boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          background: 'linear-gradient(90deg, #3b82f6 0%, #9333ea 100%)',
+          padding: '32px 24px 24px 24px',
+          textAlign: 'center',
+        }}>
+          <div style={{
+            width: 56,
+            height: 56,
+            borderRadius: '50%',
+            background: '#fff',
+            margin: '0 auto 16px auto',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <span style={{ fontSize: 32, color: '#3b82f6' }}>🎓</span>
+          </div>
+            <h2 className="text-3xl font-extrabold text-white mb-1 drop-shadow">Bienvenido al Portal Académico</h2>
+            <div className="text-blue-100 text-base font-medium">Ingresa tu API Key para acceder</div>
           </div>
 
           {/* Formulario */}
@@ -51,9 +69,7 @@ function Login() {
               <label htmlFor="apiKey" className="block text-sm font-semibold text-gray-700 mb-1">API Key</label>
               <div className="relative group">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 group-focus-within:text-blue-600 transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 12a4 4 0 01-8 0m8 0V8a4 4 0 10-8 0v4m8 0a4 4 0 01-8 0" />
-                  </svg>
+                  <span role="img" aria-label="key" className="text-lg">🔑</span>
                 </span>
                 <input
                   id="apiKey"
@@ -68,16 +84,16 @@ function Login() {
                 <button
                   type="button"
                   tabIndex={-1}
-                  className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 hover:text-blue-600 focus:outline-none"
+                  className="absolute inset-y-0 right-0 flex items-center px-2 text-gray-400 hover:text-blue-600 focus:outline-none"
                   onClick={() => setShowKey(v => !v)}
                   aria-label={showKey ? "Ocultar clave" : "Mostrar clave"}
                 >
                   {showKey ? (
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.657.336-3.236.938-4.675M15 12a3 3 0 11-6 0 3 3 0 016 0zm6.062-4.675A9.956 9.956 0 0122 9c0 5.523-4.477 10-10 10a9.956 9.956 0 01-4.675-.938" />
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.657.336-3.236.938-4.675M15 12a3 3 0 11-6 0 3 3 0 016 0zm6.062-4.675A9.956 9.956 0 0122 9c0-5.523-4.477-10-10 10a9.956 9.956 0 01-4.675-.938" />
                     </svg>
                   ) : (
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm2.25 2.25l2.25 2.25m-2.25-2.25A9.956 9.956 0 0022 9c0-5.523-4.477-10-10-10a9.956 9.956 0 00-4.675.938" />
                     </svg>
                   )}
@@ -88,18 +104,32 @@ function Login() {
             {error && <div className="text-red-600 text-sm animate-shake">{error}</div>}
             <button
               type="submit"
-              className={`w-full flex items-center justify-center gap-2 py-2 rounded-lg font-semibold text-white bg-gradient-to-r from-blue-700 via-purple-600 to-fuchsia-500 shadow-lg transition-all duration-200 hover:scale-[1.03] hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+              style={{
+                width: '100%',
+                background: 'linear-gradient(90deg, #3b82f6 0%, #9333ea 100%)',
+                color: '#fff',
+                fontWeight: 600,
+                fontSize: 17,
+                border: 'none',
+                borderRadius: 8,
+                padding: '12px 0',
+                marginTop: 8,
+                marginBottom: 8,
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(59,130,246,0.08)',
+                transition: 'background 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                letterSpacing: 1,
+              }}
               disabled={loading}
             >
               {loading ? (
-                <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                </svg>
+                <span style={{ fontSize: 18, marginRight: 8 }}>⏳</span>
               ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                <span style={{ fontSize: 20, marginRight: 6 }}>➟</span>
               )}
               {loading ? "Accediendo..." : "Acceder"}
             </button>
@@ -114,30 +144,7 @@ function Login() {
           </div>
         </div>
       </div>
-      {/* Fondo con patrón de puntos y animación fade-in */}
-      <style>{`
-        .bg-dot-pattern {
-          background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
-          background-size: 24px 24px;
-        }
-        .animate-fade-in {
-          animation: fadeIn 0.7s cubic-bezier(.39,.575,.565,1) both;
-        }
-        @keyframes fadeIn {
-          0% { opacity: 0; transform: translateY(30px); }
-          100% { opacity: 1; transform: none; }
-        }
-        .animate-shake {
-          animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
-        }
-        @keyframes shake {
-          10%, 90% { transform: translateX(-1px); }
-          20%, 80% { transform: translateX(2px); }
-          30%, 50%, 70% { transform: translateX(-4px); }
-          40%, 60% { transform: translateX(4px); }
-        }
-      `}</style>
-    </div>
+  
   );
 }
 
