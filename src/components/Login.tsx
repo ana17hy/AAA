@@ -35,13 +35,7 @@ function Login() {
       justifyContent: 'center',
       background: '#ffffff',
     }}>
-      <div style={{
-        width: 370,
-        background: '#fff',
-        borderRadius: 16,
-        boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
-        overflow: 'hidden',
-      }}>
+      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 pb-8">
         <div style={{
           background: 'linear-gradient(90deg, #3b82f6 0%, #9333ea 100%)',
           padding: '32px 24px 24px 24px',
@@ -134,13 +128,13 @@ function Login() {
                 width: '100%',
                 background: 'linear-gradient(90deg, #3b82f6 0%, #9333ea 100%)',
                 color: '#fff',
-                fontWeight: 600,
+                fontWeight: 400,
                 fontSize: 17,
                 border: 'none',
-                borderRadius: 8,
+                borderRadius: 4,
                 padding: '12px 0',
-                marginTop: 8,
-                marginBottom: 8,
+                marginTop: 2,
+                marginBottom: 4,
                 cursor: 'pointer',
                 boxShadow: '0 2px 8px rgba(59,130,246,0.08)',
                 transition: 'background 0.2s',
@@ -162,7 +156,23 @@ function Login() {
           </form>
 
           {/* Ayuda / ejemplo de clave */}
-          <div className="bg-blue-50 border border-blue-100 rounded px-2 py-1 text-[13px] text-gray-700 flex items-center gap-1 mt-2 font-medium">
+          <div
+            style={{
+              background: '#e8f0fe',
+              border: '1px solid #dbeafe',
+              borderRadius: 8,
+              padding: '6px 12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              marginTop: 3,
+              marginLeft: 24,
+              marginRight: 24,
+              fontSize: 15,
+              color: '#374151',
+              fontWeight: 500,
+            }}
+          >
             <span className="text-yellow-400 text-base">🐣</span>
             Prueba con la clave:
             <span className="bg-gray-100 text-blue-700 font-mono px-1.5 py-0.5 rounded font-semibold ml-1">
